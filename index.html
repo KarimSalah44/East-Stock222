@@ -4,15 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="theme-color" content="#0f2a52">
-    <title>East Stock - شركة رائدة في الطباعة والدعاية</title>
+    <title>إيست ستوك Eaststock</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/jpeg" href="https://iili.io/fsDo9bs.jpg">
+    <link rel="apple-touch-icon" href="https://iili.io/fsDo9bs.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;600;700;800&amp;family=Tajawal:wght@400;500;700;800;900&amp;display=swap" rel="stylesheet">
+    <meta name="google-site-verification" content="bqZXFd6HgKZM_Vi1KVjP2ssZBnlnoPk7zrT7qbxqY7U">
+    <script>
+        try {
+            if (localStorage.getItem('es_theme') === 'dark') {
+                document.documentElement.dataset.theme = 'dark';
+                document.querySelector('meta[name="theme-color"]').content = '#10254a';
+            }
+        } catch (error) {}
+    </script>
 
     <style>
-        * { margin:0; padding:0; box-sizing:border-box; font-family:'Cairo',sans-serif; }
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Tajawal',sans-serif; }
         [hidden] { display:none !important; }
 
         :root {
+            color-scheme: light;
+            --page-bg:       #f0f4fb;
+            --surface:       #fff;
+            --surface-soft:  #f8fafc;
+            --hover-bg:      #eff6ff;
+            --selected-bg:   #dbeafe;
+            --heading:       #0f2a52;
+            --link:          #1e4fa0;
+            --nav-text:      #334155;
+            --danger-bg:     #fee2e2;
+            --danger-text:   #b91c1c;
+            --media-bg:      #fff;
+            --accent-ink:    white;
             --primary:       #0f2a52;
             --primary-light: #1a3d70;
             --secondary:     #1e4fa0;
@@ -35,11 +61,37 @@
             --gap:           24px;
         }
 
+        :root[data-theme="dark"] {
+            color-scheme: dark;
+            --page-bg:       #0e131b;
+            --surface:       #1a222f;
+            --surface-soft:  #131c29;
+            --hover-bg:      #203149;
+            --selected-bg:   #233e67;
+            --heading:       #f5f8fc;
+            --link:          #89baff;
+            --nav-text:      #e0e9f5;
+            --danger-bg:     #47282f;
+            --danger-text:   #ffbec7;
+            --primary:       #10254a;
+            --secondary:     #1c4483;
+            --accent:        #ff932e;
+            --accent-dark:   #ffaf59;
+            --accent-ink:    #211305;
+            --light:         #253144;
+            --dark:          #f0f4fa;
+            --gray:          #b5c3d5;
+            --border:        #38475e;
+            --shadow:        0 2px 12px rgba(0,0,0,0.23);
+            --shadow-md:     0 4px 20px rgba(0,0,0,0.32);
+            --shadow-lg:     0 8px 32px rgba(0,0,0,0.40);
+        }
+
         html { scroll-behavior:smooth; scroll-padding-top:calc(var(--header-h) + var(--search-h) + 10px); -webkit-text-size-adjust:100%; }
-        body { background:#f0f4fb; color:var(--dark); line-height:1.6; overflow-x:hidden; min-height:100vh; }
+        body { background:var(--page-bg); color:var(--dark); line-height:1.6; overflow-x:clip; min-height:100vh; }
         img { max-width:100%; }
 
-        :focus-visible { outline:3px solid rgba(30,79,160,0.45); outline-offset:2px; border-radius:6px; }
+        :focus-visible { outline:3px solid var(--link); outline-offset:2px; border-radius:6px; }
 
         /* ===== HEADER ===== */
         .top-header {
@@ -70,7 +122,7 @@
             background:var(--whatsapp); border:none; color:white;
             padding:0 16px; height:42px; border-radius:22px; cursor:pointer;
             display:flex; align-items:center; gap:8px;
-            font-size:0.9rem; font-weight:700; font-family:'Cairo',sans-serif;
+            font-size:0.9rem; font-weight:700; font-family:'Tajawal',sans-serif;
             transition:var(--transition); white-space:nowrap;
             box-shadow:0 3px 10px rgba(37,211,102,0.35);
         }
@@ -90,7 +142,7 @@
         /* ===== SEARCH BAR ===== */
         .search-bar-wrapper {
             display:none; position:sticky; top:var(--header-h); z-index:999;
-            background:white; border-bottom:2px solid var(--border);
+            background:var(--surface); border-bottom:2px solid var(--border);
             box-shadow:0 4px 16px rgba(15,42,82,0.1);
             animation:slideSearchDown 0.25s ease;
         }
@@ -98,21 +150,30 @@
         @keyframes slideSearchDown { from { opacity:0; transform:translateY(-12px); } to { opacity:1; transform:translateY(0); } }
 
         .search-bar-inner { max-width:var(--page-max); margin:0 auto; padding:12px 20px; display:flex; align-items:center; gap:12px; }
-        .search-bar-input-wrap { position:relative; flex:1; }
+        .search-bar-input-wrap { position:relative; flex:1; min-width:0; }
         .search-bar-input {
-            width:100%; padding:12px 46px 12px 16px;
+            width:100%; min-height:54px; padding:10px 46px 10px 62px;
             border:2px solid var(--border); border-radius:12px;
-            font-size:1rem; font-family:'Cairo',sans-serif;
+            font-size:1rem; font-family:'Tajawal',sans-serif;
             transition:var(--transition); background:var(--light); color:var(--dark);
         }
-        .search-bar-input:focus { outline:none; border-color:var(--secondary); background:white; box-shadow:0 0 0 4px rgba(30,79,160,0.1); }
+        .search-bar-input:focus { outline:none; border-color:var(--link); background:var(--surface); box-shadow:0 0 0 4px rgba(30,79,160,0.1); }
         .search-bar-icon { position:absolute; right:16px; top:50%; transform:translateY(-50%); color:var(--gray); font-size:1.05rem; pointer-events:none; }
+        .search-bar-input::-webkit-search-cancel-button { display:none; }
+        .search-bar-clear {
+            position:absolute; inset-inline-end:5px; top:50%; transform:translateY(-50%);
+            display:grid; place-items:center; width:46px; height:44px;
+            border:1px solid var(--border); border-radius:9px;
+            background:var(--surface); color:var(--heading); cursor:pointer;
+            font-size:1.45rem; line-height:1;
+        }
+        .search-bar-clear:hover { background:var(--danger-bg); color:var(--danger-text); }
         .search-bar-close {
-            background:var(--light); border:none; width:42px; height:42px; border-radius:10px; cursor:pointer;
+            background:var(--light); border:none; width:44px; height:44px; border-radius:10px; cursor:pointer;
             display:flex; align-items:center; justify-content:center;
             font-size:1rem; color:var(--gray); transition:var(--transition); flex-shrink:0;
         }
-        .search-bar-close:hover { background:#fee2e2; color:#dc2626; }
+        .search-bar-close:hover { background:var(--danger-bg); color:var(--danger-text); }
 
         /* ===== MAIN LAYOUT =====
            القايمة الجانبية الآن sticky داخل الـ flex (مش fixed) فمش بتغطي
@@ -125,7 +186,7 @@
 
         .desktop-sidebar {
             width:var(--sidebar-w); flex-shrink:0;
-            background:#fff; border:1px solid var(--border); border-radius:16px;
+            background:var(--surface); border:1px solid var(--border); border-radius:16px;
             box-shadow:var(--shadow);
             position:sticky;
             top:calc(var(--header-h) + var(--search-h) + 20px);
@@ -141,85 +202,112 @@
             transition:width 0.3s ease, margin 0.3s ease, opacity 0.2s ease, border-width 0.3s ease, visibility 0s 0.3s;
         }
         .desktop-sidebar::-webkit-scrollbar { width:5px; }
-        .desktop-sidebar::-webkit-scrollbar-thumb { background:#cbd5e1; border-radius:10px; }
+        .desktop-sidebar::-webkit-scrollbar-thumb { background:var(--border); border-radius:10px; }
 
-        .categories-section { padding:6px 0 14px; min-width:var(--sidebar-w); }
-
-        .category-header {
-            color:#94a3b8; font-size:0.78rem; font-weight:700;
-            padding:14px 18px 8px; display:flex; align-items:center; gap:7px;
-        }
-        .category-header i { color:var(--secondary); font-size:0.8rem; }
+        .categories-section { padding:4px 0 8px; border-top:1px solid var(--border); }
 
         .category-item { margin:2px 10px; }
 
         .category-main {
             padding:9px 10px; cursor:pointer;
             display:flex; align-items:center; justify-content:space-between; gap:8px;
-            transition:var(--transition); font-weight:600; font-size:0.9rem; color:#334155;
+            transition:var(--transition); font-weight:600; font-size:0.9rem; color:var(--nav-text);
             border-radius:10px; line-height:1.4;
         }
-        .category-main:hover { background:#eff6ff; color:var(--primary); }
-        .category-main.active { background:#dbeafe; color:var(--primary); font-weight:700; }
+        .category-main:hover { background:var(--hover-bg); color:var(--heading); }
+        .category-main.active { background:var(--selected-bg); color:var(--heading); font-weight:700; }
 
         .category-main-left { display:flex; align-items:center; gap:10px; min-width:0; }
         .category-main-left > span { overflow-wrap:anywhere; }
 
         .category-icon {
-            width:32px; height:32px; background:#eff6ff; border-radius:9px;
+            width:32px; height:32px; background:var(--hover-bg); border-radius:9px;
             display:flex; align-items:center; justify-content:center;
-            font-size:0.88rem; color:var(--secondary); flex-shrink:0; transition:var(--transition);
+            font-size:0.88rem; color:var(--link); flex-shrink:0; transition:var(--transition);
         }
-        .category-main:hover .category-icon { background:#dbeafe; color:var(--primary); }
+        .category-main:hover .category-icon { background:var(--selected-bg); color:var(--heading); }
         .category-main.active .category-icon { background:var(--primary); color:white; }
 
-        .expand-icon { font-size:0.66rem; color:#94a3b8; transition:transform 0.25s ease; flex-shrink:0; }
+        .expand-icon { font-size:0.66rem; color:var(--gray); transition:transform 0.25s ease; flex-shrink:0; }
         .expand-icon.rotated { transform:rotate(180deg); }
 
         .subcategories {
             display:none; margin:3px 0 6px; padding:4px;
-            background:#f8fafc; border-radius:10px; border:1px solid #eef2f7;
+            background:var(--surface-soft); border-radius:10px; border:1px solid var(--border);
         }
         .subcategories.expanded { display:block; }
 
         .subcategory-item {
-            padding:8px 12px; cursor:pointer; font-size:0.85rem; color:#475569;
+            padding:8px 12px; cursor:pointer; font-size:0.85rem; color:var(--nav-text);
             transition:var(--transition); display:flex; align-items:center; gap:9px;
             border-radius:8px; line-height:1.4;
         }
         .subcategory-item::before {
-            content:''; width:5px; height:5px; background:#cbd5e1; border-radius:50%;
+            content:''; width:5px; height:5px; background:var(--border); border-radius:50%;
             flex-shrink:0; transition:var(--transition);
         }
-        .subcategory-item:hover { background:#eaf2ff; color:var(--primary); }
+        .subcategory-item:hover { background:var(--hover-bg); color:var(--heading); }
         .subcategory-item:hover::before { background:var(--primary); }
-        .subcategory-item.active { background:#dbeafe; color:var(--primary); font-weight:700; }
+        .subcategory-item.active { background:var(--selected-bg); color:var(--heading); font-weight:700; }
         .subcategory-item.active::before { background:var(--primary); }
-        .subcategory-item.all-item { font-weight:700; color:var(--secondary); }
+        .subcategory-item.all-item { font-weight:700; color:var(--link); }
 
-        .sidebar-divider { height:1px; background:#f1f5f9; margin:10px 16px; }
-
-        .about-link {
-            padding:11px 14px; background:#fff7ed; color:var(--accent-dark);
-            border-radius:10px; cursor:pointer; display:flex; align-items:center; gap:10px;
-            transition:var(--transition); font-weight:700; font-size:0.9rem; border:1px solid #fed7aa;
+        .sidebar-nav { display:grid; gap:7px; padding:12px; min-width:calc(var(--sidebar-w) - 2px); }
+        .sidebar-products { min-width:0; border:1px solid var(--border); border-radius:13px; }
+        .sidebar-products[open] { background:var(--surface-soft); }
+        .sidebar-products summary { list-style:none; }
+        .sidebar-products summary::-webkit-details-marker { display:none; }
+        .sidebar-products[open] > summary .expand-icon { transform:rotate(180deg); }
+        .sidebar-row {
+            width:100%; min-height:46px; padding:7px 9px; border:0; border-radius:11px;
+            display:flex; align-items:center; gap:9px; text-align:start;
+            background:transparent; color:var(--nav-text); text-decoration:none;
+            font-size:0.96rem; font-weight:700; cursor:pointer;
         }
-        .about-link:hover { background:var(--accent); color:white; border-color:var(--accent); }
-        .about-link i { color:var(--accent); transition:var(--transition); }
-        .about-link:hover i { color:white; }
+        .sidebar-row:hover { background:var(--hover-bg); color:var(--heading); }
+        .sidebar-row-label { flex:1; }
+        .sidebar-row .expand-icon { margin-inline-end:4px; }
+        .sidebar-row-icon {
+            display:grid; place-items:center; flex:0 0 32px; height:32px;
+            border-radius:9px; background:var(--hover-bg); color:var(--link); font-size:0.92rem;
+        }
+        .sidebar-products > summary .sidebar-row-icon,
+        .sidebar-theme .sidebar-row-icon { color:var(--accent-dark); }
+        .sidebar-controls {
+            display:grid; gap:4px; padding:5px;
+            border:1px solid var(--border); border-radius:13px; background:var(--surface-soft);
+        }
+        .sidebar-sort { display:grid; gap:5px; padding:4px 8px 7px; }
+        .sidebar-sort span { font-size:0.88rem; font-weight:700; color:var(--nav-text); }
+        .sidebar-sort select {
+            width:100%; min-width:0; min-height:44px; padding:5px 9px;
+            border:1px solid var(--border); border-radius:9px;
+            background:var(--surface); color:var(--heading); font-size:1rem; cursor:pointer;
+        }
+        .sidebar-socials { border-top:1px solid var(--border); margin-top:3px; padding-top:8px; }
+        .sidebar-socials h4 { padding:1px 9px 4px; font-size:0.82rem; color:var(--gray); }
+        .theme-switch {
+            flex:0 0 32px; height:18px; padding:2px; border-radius:12px;
+            background:var(--border); display:flex; align-items:center;
+        }
+        .theme-switch::before {
+            content:''; width:14px; height:14px; border-radius:50%;
+            background:var(--surface); box-shadow:0 1px 3px rgba(0,0,0,0.2);
+        }
+        .sidebar-theme[aria-pressed="true"] .theme-switch { background:var(--accent); justify-content:flex-end; }
 
         /* ===== MOBILE SIDEBAR ===== */
         .mobile-sidebar {
             display:none; position:fixed; top:0; right:0;
             width:min(320px, 86vw); height:100vh; height:100dvh;
-            background:#fff; box-shadow:-4px 0 24px rgba(0,0,0,0.18);
+            background:var(--surface); box-shadow:-4px 0 24px rgba(0,0,0,0.18);
             z-index:1500; transform:translateX(105%); visibility:hidden;
             transition:transform 0.35s cubic-bezier(0.4,0,0.2,1), visibility 0s 0.35s;
             overflow-y:auto; overscroll-behavior:contain;
             padding-bottom:env(safe-area-inset-bottom);
         }
         .mobile-sidebar.active { transform:translateX(0); visibility:visible; transition:transform 0.35s cubic-bezier(0.4,0,0.2,1); }
-        .mobile-sidebar .categories-section { min-width:0; }
+        .mobile-sidebar .sidebar-nav { min-width:0; }
 
         .sidebar-overlay {
             display:none; position:fixed; inset:0;
@@ -229,23 +317,23 @@
         .sidebar-overlay.active { display:block; opacity:1; }
 
         .sidebar-header {
-            padding:14px 16px; background:#f8fafc; border-bottom:1px solid #e2e8f0;
+            padding:14px 16px; background:var(--surface-soft); border-bottom:1px solid var(--border);
             display:flex; justify-content:space-between; align-items:center;
             position:sticky; top:0; z-index:2;
         }
         .sidebar-header-left { display:flex; align-items:center; gap:10px; }
         .sidebar-header-logo {
             width:38px; height:38px; background:white; border-radius:9px;
-            display:flex; align-items:center; justify-content:center; overflow:hidden; border:1px solid #e2e8f0;
+            display:flex; align-items:center; justify-content:center; overflow:hidden; border:1px solid var(--border);
         }
         .sidebar-header-logo img { width:100%; height:100%; object-fit:cover; }
-        .sidebar-header h3 { font-size:1.05rem; font-weight:800; color:var(--primary); }
+        .sidebar-header h3 { font-size:1.05rem; font-weight:800; color:var(--heading); }
         .close-sidebar {
-            background:#f1f5f9; border:1px solid #e2e8f0; color:#64748b;
+            background:var(--light); border:1px solid var(--border); color:var(--gray);
             width:36px; height:36px; border-radius:9px; cursor:pointer;
             display:flex; align-items:center; justify-content:center; font-size:0.95rem; transition:var(--transition);
         }
-        .close-sidebar:hover { background:#fee2e2; color:#dc2626; border-color:#fecaca; }
+        .close-sidebar:hover { background:var(--danger-bg); color:var(--danger-text); border-color:#fecaca; }
 
         /* ===== MAIN CONTENT ===== */
         .main-content { flex:1; min-width:0; }
@@ -254,10 +342,10 @@
             margin-bottom:20px; display:flex; align-items:flex-end;
             justify-content:space-between; gap:12px; flex-wrap:wrap;
         }
-        .content-header h2 { color:var(--primary); font-size:1.65rem; font-weight:800; line-height:1.35; margin-bottom:3px; }
+        .content-header h2 { color:var(--heading); font-size:1.65rem; font-weight:800; line-height:1.35; margin-bottom:3px; }
         .breadcrumb { color:var(--gray); font-size:0.88rem; display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
         .result-count {
-            background:white; border:1px solid var(--border); color:var(--gray);
+            background:var(--surface); border:1px solid var(--border); color:var(--gray);
             font-size:0.85rem; font-weight:600; padding:5px 14px; border-radius:20px; white-space:nowrap;
         }
 
@@ -271,7 +359,7 @@
         /* ===== PRODUCT CARD ===== */
         .product-card {
             display:flex; flex-direction:column;
-            background:white; border:1px solid var(--border); border-radius:16px;
+            background:var(--surface); border:1px solid var(--border); border-radius:16px;
             overflow:hidden; cursor:pointer; position:relative;
             transition:box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
             -webkit-tap-highlight-color:transparent;
@@ -282,10 +370,17 @@
         }
         .product-card:active { transform:scale(0.99); }
 
+        .product-card :is(.product-badge, .product-cat, .product-title, .product-price,
+                          .product-price small, .price-call, .multi-tag, .product-code) {
+            font-family:'Cairo',sans-serif;
+        }
+        [data-theme="dark"] .product-card:hover { border-color:#6585b5; }
+        [data-theme="dark"] .product-price { color:var(--accent-dark); }
+
         /* صندوق صورة مربع ثابت — الصورة تظهر كاملة (contain) من غير قص */
         .product-media {
             position:relative; width:100%; aspect-ratio:1 / 1;
-            background:#fff; overflow:hidden; border-bottom:1px solid #f1f5f9;
+            background:var(--media-bg); overflow:hidden; border-bottom:1px solid var(--border);
         }
         .product-image-track { display:flex; height:100%; transition:transform 0.35s ease; }
         .product-image-slide {
@@ -299,7 +394,7 @@
 
         .product-badge {
             position:absolute; top:10px; right:10px; z-index:2;
-            background:var(--accent); color:white;
+            background:var(--accent); color:var(--accent-ink);
             padding:3px 11px; border-radius:14px; font-size:0.75rem; font-weight:700;
             box-shadow:0 3px 8px rgba(0,0,0,0.18);
         }
@@ -318,13 +413,13 @@
 
         .card-arrow {
             position:absolute; top:50%; transform:translateY(-50%);
-            width:30px; height:30px; background:rgba(255,255,255,0.95); border:1px solid var(--border);
+            width:30px; height:30px; background:var(--surface); border:1px solid var(--border);
             border-radius:50%; cursor:pointer;
             display:flex; align-items:center; justify-content:center;
-            font-size:0.7rem; color:var(--primary); z-index:4; opacity:0;
+            font-size:0.7rem; color:var(--heading); z-index:4; opacity:0;
             transition:opacity 0.2s ease, background 0.2s ease; box-shadow:0 2px 8px rgba(0,0,0,0.15);
         }
-        .card-arrow:hover { background:white; }
+        .card-arrow:hover { background:var(--hover-bg); }
         .card-arrow-prev { right:8px; }
         .card-arrow-next { left:8px; }
         @media (hover:none) { .card-arrow { display:none; } }
@@ -334,7 +429,7 @@
             padding:14px 14px 14px;
         }
         .product-cat {
-            font-size:0.74rem; color:var(--secondary); font-weight:600;
+            font-size:0.74rem; color:var(--link); font-weight:600;
             white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
         }
         .product-title {
@@ -344,11 +439,11 @@
         }
 
         .product-meta {
-            margin-top:auto; padding-top:10px; border-top:1px solid #eef2f7;
+            margin-top:auto; padding-top:10px; border-top:1px solid var(--border);
             display:flex; align-items:center; justify-content:space-between; gap:8px; flex-wrap:wrap;
         }
         .price-block { display:flex; align-items:center; gap:6px; flex-wrap:wrap; min-width:0; }
-        .product-price { font-size:1.18rem; font-weight:800; color:var(--primary); white-space:nowrap; line-height:1.2; }
+        .product-price { font-size:1.18rem; font-weight:800; color:var(--heading); white-space:nowrap; line-height:1.2; }
         .product-price small { font-size:0.78rem; font-weight:600; color:var(--gray); }
         .price-call { font-size:0.9rem; font-weight:700; color:var(--accent-dark); }
         .multi-tag {
@@ -372,7 +467,7 @@
         .product-modal.active { display:flex; }
 
         .modal-content {
-            background:white; border-radius:20px; width:100%; max-width:960px;
+            background:var(--surface); border-radius:20px; width:100%; max-width:960px;
             max-height:90vh; max-height:90dvh; overflow-y:auto; overscroll-behavior:contain;
             box-shadow:0 25px 60px rgba(0,0,0,0.3); animation:slideUp 0.3s ease;
         }
@@ -396,35 +491,35 @@
         .modal-body { padding:22px; }
         .modal-product-layout { display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,1fr); gap:26px; }
 
-        .modal-gallery { position:relative; border-radius:14px; overflow:hidden; background:#fff; border:1px solid var(--border); }
+        .modal-gallery { position:relative; border-radius:14px; overflow:hidden; background:var(--media-bg); border:1px solid var(--border); }
         .modal-gallery-track { display:flex; transition:transform 0.4s ease; }
         .modal-gallery-slide {
             flex:0 0 100%; aspect-ratio:1 / 1; max-height:520px; padding:16px;
-            display:flex; align-items:center; justify-content:center; background:#fff;
+            display:flex; align-items:center; justify-content:center; background:var(--media-bg);
         }
         .modal-gallery-slide img { width:100%; height:100%; object-fit:contain; display:block; user-select:none; -webkit-user-drag:none; }
 
         .modal-gallery-dots { position:absolute; bottom:12px; left:50%; transform:translateX(-50%); display:flex; gap:6px; }
-        .modal-dot { width:8px; height:8px; border-radius:50%; background:rgba(15,42,82,0.25); border:none; cursor:pointer; transition:var(--transition); padding:0; }
-        .modal-dot.active { background:var(--primary); width:20px; border-radius:4px; }
+        .modal-dot { width:8px; height:8px; border-radius:50%; background:#748297; border:none; cursor:pointer; transition:var(--transition); padding:0; }
+        .modal-dot.active { background:#264c7c; width:20px; border-radius:4px; }
 
         .modal-gallery-arrow {
             position:absolute; top:50%; transform:translateY(-50%);
-            width:38px; height:38px; background:rgba(255,255,255,0.95); border:1px solid var(--border); border-radius:50%;
+            width:38px; height:38px; background:var(--surface); border:1px solid var(--border); border-radius:50%;
             cursor:pointer; display:flex; align-items:center; justify-content:center;
-            font-size:0.85rem; color:var(--primary); box-shadow:var(--shadow-md); transition:var(--transition); z-index:5;
+            font-size:0.85rem; color:var(--heading); box-shadow:var(--shadow-md); transition:var(--transition); z-index:5;
         }
-        .modal-gallery-arrow:hover { background:white; transform:translateY(-50%) scale(1.08); }
+        .modal-gallery-arrow:hover { background:var(--hover-bg); transform:translateY(-50%) scale(1.08); }
         .modal-gallery-arrow.prev { right:10px; }
         .modal-gallery-arrow.next { left:10px; }
 
         .modal-thumbs { display:flex; gap:8px; padding:10px 2px 0; flex-wrap:wrap; }
         .modal-thumb {
-            width:58px; height:58px; border-radius:9px; overflow:hidden; background:#fff;
+            width:58px; height:58px; border-radius:9px; overflow:hidden; background:var(--media-bg);
             cursor:pointer; border:2px solid var(--border); transition:var(--transition); flex-shrink:0; padding:3px;
         }
-        .modal-thumb:hover { border-color:var(--secondary); }
-        .modal-thumb.active { border-color:var(--primary); }
+        .modal-thumb:hover { border-color:var(--link); }
+        .modal-thumb.active { border-color:var(--heading); }
         .modal-thumb img { width:100%; height:100%; object-fit:contain; display:block; }
 
         .modal-details-section { display:flex; flex-direction:column; gap:14px; min-width:0; }
@@ -443,12 +538,12 @@
             background:var(--light); border-radius:10px; cursor:pointer;
             transition:var(--transition); border:2px solid transparent;
         }
-        .modal-pricelist-item.active { border-color:var(--secondary); background:rgba(30,79,160,0.06); }
-        .modal-pricelist-item:hover { background:rgba(30,79,160,0.06); }
-        .modal-pricelist-img { width:46px; height:46px; border-radius:8px; object-fit:contain; background:#fff; border:1px solid var(--border); flex-shrink:0; }
+        .modal-pricelist-item.active { border-color:var(--link); background:var(--hover-bg); }
+        .modal-pricelist-item:hover { background:var(--hover-bg); }
+        .modal-pricelist-img { width:46px; height:46px; border-radius:8px; object-fit:contain; background:var(--media-bg); border:1px solid var(--border); flex-shrink:0; }
         .modal-pricelist-info { flex:1; min-width:0; }
         .modal-pricelist-name { font-size:0.88rem; font-weight:600; color:var(--dark); overflow-wrap:anywhere; }
-        .modal-pricelist-price { font-size:0.84rem; color:var(--secondary); font-weight:700; }
+        .modal-pricelist-price { font-size:0.84rem; color:var(--link); font-weight:700; }
 
         .modal-info-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
         .info-item {
@@ -456,19 +551,19 @@
             border-radius:10px; border-right:3px solid var(--accent); gap:10px; min-width:0;
         }
         .info-icon {
-            width:34px; height:34px; background:white; border-radius:9px;
-            display:flex; align-items:center; justify-content:center; color:var(--secondary); font-size:0.95rem; flex-shrink:0;
+            width:34px; height:34px; background:var(--surface); border-radius:9px;
+            display:flex; align-items:center; justify-content:center; color:var(--link); font-size:0.95rem; flex-shrink:0;
         }
         .info-item > div:last-child { min-width:0; }
         .info-label { font-size:0.74rem; color:var(--gray); margin-bottom:1px; }
         .info-value { font-size:0.88rem; font-weight:700; color:var(--dark); overflow-wrap:anywhere; }
 
         .modal-description { background:var(--light); padding:14px; border-radius:10px; font-size:0.9rem; line-height:1.8; color:var(--dark); white-space:pre-line; }
-        .modal-description h4 { color:var(--primary); margin-bottom:6px; font-size:0.95rem; white-space:normal; }
+        .modal-description h4 { color:var(--heading); margin-bottom:6px; font-size:0.95rem; white-space:normal; }
 
         .action-btn {
             width:100%; padding:14px; border:none; border-radius:12px;
-            font-size:1rem; font-weight:700; font-family:'Cairo',sans-serif; cursor:pointer;
+            font-size:1rem; font-weight:700; font-family:'Tajawal',sans-serif; cursor:pointer;
             display:flex; align-items:center; justify-content:center; gap:10px; transition:var(--transition);
         }
         .whatsapp-btn { background:var(--whatsapp); color:white; }
@@ -485,7 +580,10 @@
             font-size:1.35rem; box-shadow:var(--shadow-lg); transition:var(--transition); color:white;
         }
         .float-btn:hover { transform:scale(1.08) translateY(-3px); }
-        .whatsapp-float { background:var(--whatsapp); }
+        .theme-float { background:var(--primary); border:1px solid var(--border); }
+        [data-theme="dark"] .theme-float { background:var(--surface); color:var(--accent-dark); }
+        .theme-icon { line-height:1; }
+        .theme-icon svg { display:block; width:1em; height:1em; }
         .scroll-top { background:var(--primary); display:none; }
         .scroll-top.visible { display:flex; }
 
@@ -533,7 +631,7 @@
             display:flex; align-items:center; justify-content:center; color:white; font-size:1.1rem;
             transition:var(--transition); text-decoration:none; border:1px solid rgba(255,255,255,0.1);
         }
-        .social-icon:hover { background:var(--accent); border-color:var(--accent); transform:translateY(-4px); }
+        .social-icon:hover { color:var(--accent-ink); background:var(--accent); border-color:var(--accent); transform:translateY(-4px); }
 
         .footer-divider { border:none; border-top:1px solid rgba(255,255,255,0.1); margin:0; position:relative; z-index:1; }
         .footer-bottom {
@@ -547,7 +645,7 @@
             display:flex; flex-direction:column; align-items:center; justify-content:center;
             padding:60px 20px; color:var(--gray); grid-column:1/-1;
         }
-        .loading i { font-size:2.8rem; animation:spin 1s linear infinite; color:var(--secondary); margin-bottom:12px; }
+        .loading i { font-size:2.8rem; animation:spin 1s linear infinite; color:var(--link); margin-bottom:12px; }
         @keyframes spin { 100% { transform:rotate(360deg); } }
 
         .empty-state { grid-column:1/-1; text-align:center; padding:60px 20px; color:var(--gray); }
@@ -651,10 +749,10 @@
                     <i class="fab fa-whatsapp"></i>
                     <span>واتساب</span>
                 </button>
-                <button class="search-btn" onclick="toggleSearchBar()" id="searchToggleBtn" title="بحث" aria-label="بحث">
+                <button class="search-btn" onclick="toggleSearchBar()" id="searchToggleBtn" title="بحث" aria-label="بحث" aria-controls="searchBarWrapper" aria-expanded="false">
                     <i class="fas fa-search"></i>
                 </button>
-                <button class="menu-btn" onclick="openMobileSidebar()" title="القائمة" aria-label="فتح القائمة">
+                <button class="menu-btn" id="mobileMenuBtn" onclick="openMobileSidebar()" title="القائمة" aria-label="فتح القائمة" aria-controls="mobileSidebar" aria-expanded="false">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
@@ -668,10 +766,12 @@
                 <i class="fas fa-search search-bar-icon"></i>
                 <input type="search" class="search-bar-input" id="searchBarInput"
                        placeholder="ابحث بالاسم أو الكود أو الصنف..."
-                       oninput="handleSearchBar(event)" autocomplete="off" enterkeyhint="search">
+                       oninput="handleSearchBar(event)" autocomplete="off" enterkeyhint="search" aria-label="بحث المنتجات">
+                <button type="button" class="search-bar-clear" id="searchBarClear" onclick="resetSearchBar()"
+                        title="مسح البحث" aria-label="مسح نص البحث" hidden><span aria-hidden="true">×</span></button>
             </div>
-            <button class="search-bar-close" onclick="toggleSearchBar()" title="إغلاق" aria-label="إغلاق البحث">
-                <i class="fas fa-times"></i>
+            <button class="search-bar-close" onclick="toggleSearchBar()" title="إغلاق شريط البحث" aria-label="إغلاق شريط البحث">
+                <i class="fas fa-chevron-up" aria-hidden="true"></i>
             </button>
         </div>
     </div>
@@ -681,7 +781,7 @@
 
         <!-- DESKTOP SIDEBAR -->
         <aside class="desktop-sidebar" id="desktopSidebar" aria-label="الأقسام">
-            <div class="categories-section" id="desktopCategoriesContainer"></div>
+            <nav class="sidebar-nav" aria-label="التنقل"></nav>
         </aside>
 
         <!-- MOBILE SIDEBAR -->
@@ -699,7 +799,7 @@
                     <i class="fas fa-times"></i>
                 </button>
             </div>
-            <div class="categories-section" id="mobileCategoriesContainer"></div>
+            <nav class="sidebar-nav" aria-label="التنقل"></nav>
         </aside>
 
         <!-- MAIN CONTENT -->
@@ -806,8 +906,9 @@
         <button class="float-btn scroll-top" id="scrollTop" onclick="scrollToTop()" aria-label="للأعلى">
             <i class="fas fa-arrow-up"></i>
         </button>
-        <button class="float-btn whatsapp-float" onclick="openWhatsApp()" aria-label="واتساب">
-            <i class="fab fa-whatsapp"></i>
+        <button type="button" class="float-btn theme-float" data-theme-toggle onclick="toggleTheme()"
+                title="تفعيل الوضع الليلي" aria-label="الوضع الليلي" aria-pressed="false">
+            <span class="theme-icon" aria-hidden="true"></span>
         </button>
     </div>
 
@@ -816,7 +917,7 @@
         <div class="footer-top">
             <div class="footer-container">
                 <div class="footer-grid">
-                    <div class="footer-about">
+                    <div class="footer-about" id="aboutCompany" tabindex="-1">
                         <div class="footer-brand">
                             <div class="footer-logo-img">
                                 <img src="https://iili.io/fsDo9bs.jpg" alt="East Stock"
@@ -832,11 +933,11 @@
                             نحن شركة رائدة في مجال الطباعة والدعاية والإعلان، نقدم حلولاً متكاملة ومبتكرة لجميع احتياجاتكم من الطباعة والهدايا الدعائية ومستلزمات المكاتب. نفخر بتقديم منتجات عالية الجودة وخدمة عملاء متميزة.
                         </p>
                         <div class="social-links">
-                            <a href="#" class="social-icon" title="Facebook" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.facebook.com/share/1FUB9oNtHY/" target="_blank" rel="noopener noreferrer" class="social-icon" title="Facebook" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                             <a href="#" class="social-icon" title="Instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                            <a href="#" class="social-icon" title="TikTok" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                            <a href="https://www.tiktok.com/@eaststock0?_r=1&amp;_t=ZS-9BLdeNFDcDl" target="_blank" rel="noopener noreferrer" class="social-icon" title="TikTok" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
                             <a href="#" class="social-icon" title="YouTube" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                            <a href="#" class="social-icon" title="Telegram" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+                            <a href="https://t.me/eaststockegypt" target="_blank" rel="noopener noreferrer" class="social-icon" title="Telegram" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
                         </div>
                     </div>
 
@@ -875,6 +976,64 @@
             <span>© 2026 East Stock. جميع الحقوق محفوظة</span>
         </div>
     </footer>
+
+    <template id="sidebarNavTemplate">
+        <details class="sidebar-products">
+            <summary class="sidebar-row">
+                <span class="sidebar-row-icon"><i class="fas fa-box-open" aria-hidden="true"></i></span>
+                <span class="sidebar-row-label">المنتجات والفلاتر</span>
+                <i class="fas fa-chevron-down expand-icon" aria-hidden="true"></i>
+            </summary>
+            <div class="categories-section"></div>
+        </details>
+        <div class="sidebar-controls" role="group" aria-label="أدوات الكتالوج">
+            <button type="button" class="sidebar-row" onclick="openCatalogSearch()">
+                <span class="sidebar-row-icon"><i class="fas fa-search" aria-hidden="true"></i></span>
+                <span class="sidebar-row-label">بحث في الكتالوج</span>
+            </button>
+            <label class="sidebar-sort">
+                <span>ترتيب المنتجات</span>
+                <select data-product-sort onchange="setProductSort(this.value)">
+                    <option value="newest">الأحدث أولاً</option>
+                    <option value="price-asc">السعر من الأقل للأعلى</option>
+                    <option value="price-desc">السعر من الأعلى للأقل</option>
+                    <option value="name">الاسم أبجديًا</option>
+                </select>
+            </label>
+            <button type="button" class="sidebar-row" onclick="resetCatalogFilters()">
+                <span class="sidebar-row-icon"><i class="fas fa-rotate-left" aria-hidden="true"></i></span>
+                <span class="sidebar-row-label">إعادة ضبط الفلاتر</span>
+            </button>
+        </div>
+        <button type="button" class="sidebar-row sidebar-theme" data-theme-toggle onclick="toggleTheme()" aria-pressed="false">
+            <span class="sidebar-row-icon theme-icon" aria-hidden="true"></span>
+            <span class="sidebar-row-label">الوضع الليلي</span>
+            <span class="theme-switch" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="sidebar-row" onclick="closeMobileSidebar();scrollToFooter()">
+            <span class="sidebar-row-icon"><i class="fas fa-building" aria-hidden="true"></i></span>
+            <span class="sidebar-row-label">عن الشركة</span>
+        </button>
+        <section class="sidebar-socials">
+            <h4>تواصل معنا</h4>
+            <a class="sidebar-row" href="https://wa.me/201040009913" target="_blank" rel="noopener noreferrer">
+                <span class="sidebar-row-icon"><i class="fab fa-whatsapp" aria-hidden="true"></i></span>
+                <span class="sidebar-row-label">واتساب</span>
+            </a>
+            <a class="sidebar-row" href="https://www.facebook.com/share/1FUB9oNtHY/" target="_blank" rel="noopener noreferrer">
+                <span class="sidebar-row-icon"><i class="fab fa-facebook-f" aria-hidden="true"></i></span>
+                <span class="sidebar-row-label">فيسبوك</span>
+            </a>
+            <a class="sidebar-row" href="https://t.me/eaststockegypt" target="_blank" rel="noopener noreferrer">
+                <span class="sidebar-row-icon"><i class="fab fa-telegram" aria-hidden="true"></i></span>
+                <span class="sidebar-row-label">تليجرام</span>
+            </a>
+            <a class="sidebar-row" href="https://www.tiktok.com/@eaststock0?_r=1&amp;_t=ZS-9BLdeNFDcDl" target="_blank" rel="noopener noreferrer">
+                <span class="sidebar-row-icon"><i class="fab fa-tiktok" aria-hidden="true"></i></span>
+                <span class="sidebar-row-label">تيك توك</span>
+            </a>
+        </section>
+    </template>
 
     <!-- ====== FIREBASE ====== -->
     <script type="module">
@@ -917,13 +1076,15 @@
         window.allProducts = [];
         let currentFilter     = 'all';
         let currentSubFilter  = null;
+        let productSort       = 'newest';
+        let catalogLoaded     = false;
         let currentProduct    = null;
         let modalCurrentSlide = 0;
         let searchBarOpen     = false;
         let desktopSidebarCollapsed = false;
         let openCat           = null;       // القسم المفتوح في الـ accordion
         let lastSwipe         = 0;
-        const hasSubs         = {};         // category -> true لو عنده أقسام فرعية
+        const hasSubs         = Object.create(null);         // category -> true لو عنده أقسام فرعية
 
         const CURRENCY = " ج.م";
         const MOBILE_BP = 1024;
@@ -961,11 +1122,13 @@
         // DATA HOOKS (بيناديها Firebase)
         // ============================================================
         window.onProductsUpdated = function (products) {
+            catalogLoaded = true;
             window.allProducts = products;
             renderSidebars(products);
             applyCurrentFilter();
         };
         window.onProductsError = function () {
+            catalogLoaded = false;
             window.allProducts = [];
             renderSidebars([]);
             displayProducts([], 'تعذر تحميل المنتجات، تأكد من الاتصال بالإنترنت وحاول مرة أخرى');
@@ -986,7 +1149,7 @@
         // SIDEBAR BUILDER
         // ============================================================
         function renderSidebars(products) {
-            const catMap = {};
+            const catMap = Object.create(null);
             products.forEach(p => {
                 if (!p.category) return;
                 if (!catMap[p.category]) catMap[p.category] = new Set();
@@ -996,8 +1159,7 @@
             Object.entries(catMap).forEach(([c, s]) => { if (s.size) hasSubs[c] = true; });
 
             const html = buildSidebarHTML(catMap);
-            document.getElementById('desktopCategoriesContainer').innerHTML = html;
-            document.getElementById('mobileCategoriesContainer').innerHTML  = html;
+            sidebarCategories.forEach(box => { box.innerHTML = html; });
             updateFooterCategories(catMap);
             applyOpen();
             syncSidebar();
@@ -1005,7 +1167,6 @@
 
         function buildSidebarHTML(catMap) {
             let html = `
-                <div class="category-header"><i class="fas fa-layer-group"></i>الأقسام</div>
                 <div class="category-item">
                     <div class="category-main" data-action="all" role="button" tabindex="0">
                         <div class="category-main-left">
@@ -1047,13 +1208,6 @@
                 }
             });
 
-            html += `
-                <div class="sidebar-divider"></div>
-                <div class="category-item">
-                    <div class="about-link" data-action="about" role="button" tabindex="0">
-                        <i class="fas fa-building"></i><span>عن الشركة</span>
-                    </div>
-                </div>`;
             return html;
         }
 
@@ -1067,12 +1221,15 @@
             if (a === 'all')   filterByCategory('all');
             if (a === 'cat')   filterByCategory(el.dataset.cat);
             if (a === 'sub')   filterBySubcategory(el.dataset.sub, el.dataset.cat);
-            if (a === 'about') scrollToFooter();
             closeMobileSidebar();
         }
 
-        ['desktopCategoriesContainer', 'mobileCategoriesContainer'].forEach(id => {
-            const box = document.getElementById(id);
+        const sidebarNavTemplate = document.getElementById('sidebarNavTemplate');
+        document.querySelectorAll('.sidebar-nav').forEach(nav => {
+            nav.append(sidebarNavTemplate.content.cloneNode(true));
+        });
+        const sidebarCategories = document.querySelectorAll('.sidebar-nav .categories-section');
+        sidebarCategories.forEach(box => {
             box.addEventListener('click', e => {
                 const el = e.target.closest('[data-action]');
                 if (el) handleSidebarAction(el);
@@ -1137,7 +1294,7 @@
             }
             count.textContent = products.length + ' منتج';
             count.hidden = false;
-            grid.innerHTML = products.map(buildProductCard).join('');
+            grid.innerHTML = sortProducts(products).map(buildProductCard).join('');
         }
 
         function buildProductCard(p) {
@@ -1340,9 +1497,55 @@
         // ============================================================
         // FILTERS
         // ============================================================
+        function numericCardPrice(product) {
+            const price = priceText(getImages(product)[0].price || product.price);
+            if (!price) return null;
+            const normalized = price
+                .replace(/[٠-٩۰-۹]/g, digit => String('٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹'.indexOf(digit) % 10))
+                .replace(/٬/g, ',').replace(/٫/g, '.')
+                .replace(/\s*(?:ج\.?\s*م\.?|EGP)$/i, '').trim();
+            if (!/^\d+(?:,\d{3})*(?:\.\d+)?$/.test(normalized)) return null;
+            const value = Number(normalized.replace(/,/g, ''));
+            return Number.isFinite(value) ? value : null;
+        }
+
+        function sortProducts(products) {
+            if (productSort === 'newest') return products;
+            if (productSort === 'name') {
+                return [...products].sort((a, b) => String(a.title || '').localeCompare(String(b.title || ''), 'ar', { numeric: true }));
+            }
+            const direction = productSort === 'price-asc' ? 1 : -1;
+            return products.map(product => ({ product, price: numericCardPrice(product) }))
+                .sort((a, b) => {
+                    if (a.price === null || b.price === null) return Number(a.price === null) - Number(b.price === null);
+                    return direction * (a.price - b.price);
+                })
+                .map(item => item.product);
+        }
+
+        function setProductSort(value) {
+            productSort = value;
+            document.querySelectorAll('[data-product-sort]').forEach(select => { select.value = value; });
+            if (catalogLoaded) applyCurrentFilter();
+        }
+
+        function resetCatalogFilters() {
+            currentFilter = 'all';
+            currentSubFilter = null;
+            openCat = null;
+            clearSearchInput();
+            applyOpen();
+            syncSidebar();
+            updatePageTitle('جميع المنتجات');
+            setProductSort('newest');
+            closeMobileSidebar();
+            scrollToTop();
+        }
+
         function clearSearchInput() {
             const input = document.getElementById('searchBarInput');
-            if (input.value) input.value = '';
+            input.value = '';
+            document.getElementById('searchBarClear').hidden = true;
         }
 
         function applyCurrentFilter() {
@@ -1385,6 +1588,19 @@
         // ============================================================
         // SEARCH
         // ============================================================
+        function openCatalogSearch() {
+            closeMobileSidebar();
+            scrollToTop();
+            if (!searchBarOpen) toggleSearchBar();
+            else document.getElementById('searchBarInput').focus();
+        }
+
+        function resetSearchBar() {
+            clearSearchInput();
+            applyCurrentFilter();
+            document.getElementById('searchBarInput').focus();
+        }
+
         function updateSearchOffset() {
             const w = document.getElementById('searchBarWrapper');
             document.documentElement.style.setProperty('--search-h', searchBarOpen ? w.offsetHeight + 'px' : '0px');
@@ -1393,17 +1609,21 @@
         function toggleSearchBar() {
             searchBarOpen = !searchBarOpen;
             document.getElementById('searchBarWrapper').classList.toggle('active', searchBarOpen);
+            const toggle = document.getElementById('searchToggleBtn');
+            toggle.setAttribute('aria-expanded', String(searchBarOpen));
             updateSearchOffset();
             const input = document.getElementById('searchBarInput');
             if (searchBarOpen) {
                 input.focus();
             } else {
-                input.value = '';
+                clearSearchInput();
                 applyCurrentFilter();
+                toggle.focus();
             }
         }
 
         function handleSearchBar(e) {
+            document.getElementById('searchBarClear').hidden = e.target.value.length === 0;
             const raw = e.target.value.trim();
             const q = raw.toLowerCase();
             if (!q) {
@@ -1426,21 +1646,54 @@
         function openMobileSidebar() {
             document.getElementById('mobileSidebar').classList.add('active');
             document.getElementById('sidebarOverlay').classList.add('active');
+            document.getElementById('mobileMenuBtn').setAttribute('aria-expanded', 'true');
             document.body.style.overflow = 'hidden';
+            document.querySelector('#mobileSidebar .close-sidebar').focus();
         }
         function closeMobileSidebar() {
             const sb = document.getElementById('mobileSidebar');
             if (!sb.classList.contains('active')) return;
             sb.classList.remove('active');
             document.getElementById('sidebarOverlay').classList.remove('active');
+            const toggle = document.getElementById('mobileMenuBtn');
+            toggle.setAttribute('aria-expanded', 'false');
             if (!document.getElementById('productModal').classList.contains('active')) document.body.style.overflow = '';
+            if (isMobileView()) toggle.focus();
+        }
+
+        // ============================================================
+        // THEME
+        // ============================================================
+        const themeIcons = {
+            moon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.9 13.35A9 9 0 1 1 10.65 3.1a7 7 0 0 0 10.25 10.25Z"/></svg>',
+            sun: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>'
+        };
+
+        function applyTheme(dark) {
+            document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+            document.querySelector('meta[name="theme-color"]').content = dark ? '#10254a' : '#0f2a52';
+            document.querySelectorAll('[data-theme-toggle]').forEach(button => {
+                button.setAttribute('aria-pressed', String(dark));
+                button.title = dark ? 'التبديل إلى الوضع النهاري' : 'تفعيل الوضع الليلي';
+                button.querySelector('.theme-icon').innerHTML = dark ? themeIcons.sun : themeIcons.moon;
+            });
+        }
+
+        function toggleTheme() {
+            const dark = document.documentElement.dataset.theme !== 'dark';
+            applyTheme(dark);
+            try { localStorage.setItem('es_theme', dark ? 'dark' : 'light'); } catch (error) {}
         }
 
         // ============================================================
         // SCROLL & CONTACT
         // ============================================================
         function scrollToTop()    { window.scrollTo({ top: 0, behavior: 'smooth' }); }
-        function scrollToFooter() { document.getElementById('footer').scrollIntoView({ behavior: 'smooth' }); }
+        function scrollToFooter() {
+            const about = document.getElementById('aboutCompany');
+            about.focus({ preventScroll: true });
+            about.scrollIntoView({ behavior: 'smooth' });
+        }
 
         function openWhatsApp() { window.open('https://wa.me/201040009913', '_blank', 'noopener'); }
 
@@ -1483,6 +1736,8 @@
             document.getElementById('scrollTop').classList.toggle('visible', window.pageYOffset > 300);
         }, { passive: true });
 
+        renderSidebars([]);
+        applyTheme(document.documentElement.dataset.theme === 'dark');
         try { if (localStorage.getItem('es_sidebar_collapsed') === '1') setSidebarCollapsed(true); } catch (e) {}
     </script>
 </body>
